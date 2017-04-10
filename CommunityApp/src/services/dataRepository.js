@@ -15,7 +15,7 @@ export class DataRepository {
                         event.image = `images/speakers/${event.image}`;
                     });
                     resolve(_events);
-                }, 2000);
+                }, 10);
             }
             else {
                 resolve(_events);

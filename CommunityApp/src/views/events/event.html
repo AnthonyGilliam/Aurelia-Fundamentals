@@ -1,5 +1,21 @@
 <template>
 	<div class="bg-success rbox">
-		<a href.bind="event.detailUrl">${event.id} : ${event.title}</a>
+		<table>
+			<tr>
+				<td>
+					<a href.bind="event.detailUrl">
+						<h3 textContent.bind="event.title"></h3>
+					</a>
+				</td>
+			<tr>
+				<td>
+					<h5>${event.dateTime}</h5>
+				</td>
+			</tr>
+			<tr>
+				<td innerHTML.bind='event.description | sanitizeHTML'></td>
+			</tr>
+		</table>
+		<div textContent.two-way="event.description" contenteditable="true"></div>
 	</div>
 </template>

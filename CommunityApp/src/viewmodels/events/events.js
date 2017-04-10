@@ -36,6 +36,7 @@ export class Events {
 
             this.events.forEach(event =>
                 event.detailUrl = this.router.generate('eventDetail', { eventId: event.id })
-            )});
+            )
+        });
 	}
 }
