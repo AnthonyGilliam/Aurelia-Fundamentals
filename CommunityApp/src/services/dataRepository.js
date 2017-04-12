@@ -1,13 +1,16 @@
 import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-http-client';
+import {HttpClient as FetchClient} from 'aurelia-fetch-client';
 import moment from 'moment';
 
 let _events = undefined;
 
-@inject(HttpClient)
+@inject('apiRoot', HttpClient, FetchClient)
 export class DataRepository {
-    constructor(httpClient){
+    constructor(httpClient, fetchClient, apiRoot){
+        this.apiRoot = apiRoot;
         this.httpClient = httpClient;
+        this.fetchClient = fetchClient;
     }
 
     get events() {
@@ -15,17 +18,17 @@ export class DataRepository {
             if (_events) {
                 resolve(_events);
             } else {
-                this.httpClient.get('http://localhost:27092/api/events')
-                    .then(result => {
-                        _events = result.content;
+                this.httpClient.get(`${this.apiRoot}api/events`)
+                    .then(response => {
+                        _events = response.content;
                         _events.forEach(event => {
                             event.dateime = moment(event.dateTime).format("MM/DD/YYYY HH:mm");
                             event.image = `images/speakers/${event.image}`;
                         });
                         resolve(_events);
                     })
-                    .catch(result =>
-                        reject(`${result.statusCode}: ${result.statusText}`)
+                    .catch(response =>
+                        reject(`${response.statusCode}: ${response.statusText}`)
                     );
             }
         });

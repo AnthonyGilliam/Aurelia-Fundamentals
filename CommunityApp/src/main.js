@@ -8,6 +8,7 @@ export function configure(aurelia) {
     cache.data.push(`obj 1`);
     cache.data.push(`obj 2`);
     aurelia.use.instance("Cache", cache);
+    aurelia.use.instance("apiRoot", "http://localhost:27092/");
 
     aurelia.use.standardConfiguration().developmentLogging();
 
