@@ -3,14 +3,14 @@ import {ViewLocator} from 'aurelia-framework';
 import {DataCache} from 'dataCache';
 
 export function configure(aurelia) {
-    let cache = new DataCache();
-    cache.data.push(`obj 0`);
-    cache.data.push(`obj 1`);
-    cache.data.push(`obj 2`);
-    aurelia.use.instance("Cache", cache);
-    aurelia.use.instance("apiRoot", "http://localhost:27092/");
+    //TODO: Create actual cache for queried data
+    //let cache = new DataCache();
 
-    aurelia.use.standardConfiguration().developmentLogging();
+    aurelia.use
+        .standardConfiguration()
+        .developmentLogging();
+
+    aurelia.use.instance("apiRoot", "http://localhost:27092/");
 
     ViewLocator.prototype.convertOriginToViewUrl = (origin) => {
         let viewModelUrl = origin.moduleId;
