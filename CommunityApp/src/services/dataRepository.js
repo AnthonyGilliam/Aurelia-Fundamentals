@@ -1,17 +1,17 @@
 import {inject} from 'aurelia-framework';
 import {HttpClient as AjaxClient} from 'aurelia-http-client';
 import {HttpClient as FetchClient, json} from 'aurelia-fetch-client';
+import {states, jobTypes, jobSkills} from 'services/jobsData';
 import moment from 'moment';
 
 let _events = undefined;
 
-@inject('apiRoot', AjaxClient, FetchClient, json)
+@inject('apiRoot', AjaxClient, FetchClient)
 export class DataRepository {
     constructor(apiRoot, ajaxClient, fetchClient){
         this.apiRoot = apiRoot;
         this.ajaxClient = ajaxClient;
         this.fetchClient = fetchClient;
-        this.json = json;
     }
 
     get events() {
@@ -43,16 +43,15 @@ export class DataRepository {
     getEvent(id) {
         return this.events
             .then(events => events.find(event => event.id === id))
-            .catch(reason => console.log(`The DataRepository.getJobs() function failed with ${reason}`));
+            .catch(reason => console.log(`The DataRepository.getEvent(${id}) function failed with ${reason}`));
     }
 
     getJobs() {
         let promise = new Promise((resolve, reject) => {
-            let jobs = [];
             this.fetchClient.fetch(this.apiRoot + 'api/Jobs')
                 .then(response => response.json())
                 .then(data => {
-                    jobs = data;
+                    let jobs = data || [];
                     resolve(jobs);
                 })
                 .catch(reason => {
@@ -69,5 +68,36 @@ export class DataRepository {
                 .then(data => resolve(data))
                 .catch(reason => reject(reason));
         });
+        return promise;
+    }
+
+    getStates() {
+        var promise = new Promise((resolve) => {
+            if (!this.states) {
+                this.states = states;
+            }
+            resolve(this.states);
+        });
+        return promise;
+    }
+
+    getJobTypes() {
+        var promise = new Promise((resolve) => {
+            if (!this.jobTypes) {
+                this.jobTypes = jobTypes;
+            }
+            resolve(this.jobTypes);
+        });
+        return promise;
+    }
+
+    getJobSkills() {
+        var promise = new Promise((resolve) => {
+            if (!this.jobSkills) {
+                this.jobSkills = jobSkills;
+            }
+            resolve(this.jobSkills);
+        });
+        return promise;
     }
 }

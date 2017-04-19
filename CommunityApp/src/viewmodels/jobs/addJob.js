@@ -13,8 +13,8 @@ export class AddJob {
 		});
 		this.dataRepository.getJobTypes().then(jobTypes => {
 			this.jobTypes = jobTypes;
-		})
-		this.dataRepository.getJobSkills().then(jobSkills =>{
+		});
+		this.dataRepository.getJobSkills().then(jobSkills => {
 			this.jobSkills = jobSkills;
 		});
 	}

@@ -233,7 +233,7 @@ export var eventsData = [
   },
   {
     "id": 172,
-    "description": "Aurelia is a full featured client JavaScript framework for building Single Page Apps (SPAs). In this session you will learn how to get started building applications with it. You'll see how to get your app configured and bootstrapped, how to implement the MVVM pattern with it, how to do data binding, how to leverage routing and navigation, call services and more.",
+    "description": "<b>Aurelia</b> is a full featured client JavaScript framework for building <em>Single Page Apps</em> (SPAs). <br/><br/>In this session you will learn how to get started building applications with it. You'll see how to get your app configured and bootstrapped, how to implement the MVVM pattern with it, how to do data binding, how to leverage routing and navigation, call services and more.",
     "dateTime": "2015-12-25T23:30:00.000Z",
     "title": "Getting Started with Aurelia - Brian Noyes (RD/MVP)",
     "speaker": "Brian Noyes",

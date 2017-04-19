@@ -10,9 +10,13 @@ export class Jobs {
 	activate(params, routeConfig, navigationInstruction) {
 		this.jobs = [];
 		this.router = navigationInstruction.router;
-		return this.dataRepository.getJobs().then( jobs => {
-			this.jobs = jobs; 
-		});
+		return this.dataRepository.getJobs()
+			.then(jobs => {
+				this.jobs = jobs;
+			})
+			.catch(reason =>
+                console.log(`The DataRepository.getJobs() function failed with '${reason}'`)
+			);
 	}
 
 	addJob() {
