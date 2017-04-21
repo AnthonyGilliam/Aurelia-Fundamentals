@@ -1,22 +1,22 @@
 import {inject} from 'aurelia-framework';
+import {ValidationRules, ValidationController} from 'aurelia-validation';
 import {DataRepository} from 'services/dataRepository';
 
-@inject(DataRepository)
+@inject(DataRepository, ValidationController)
 export class AddJob {
-	
-
-	constructor(dataRepository) {
-		this.job = { jobType: "Full Time", jobSkills: []};
-		this.dataRepository = dataRepository;
-		this.dataRepository.getStates().then(states=> {
+	constructor(dataRepository, valController) {
+		dataRepository.getStates().then(states=> {
 			this.states = states;
 		});
-		this.dataRepository.getJobTypes().then(jobTypes => {
+		dataRepository.getJobTypes().then(jobTypes => {
 			this.jobTypes = jobTypes;
 		});
-		this.dataRepository.getJobSkills().then(jobSkills => {
+		dataRepository.getJobSkills().then(jobSkills => {
 			this.jobSkills = jobSkills;
 		});
+        this.dataRepository = dataRepository;
+        this.valController = valController;
+        this.job = { jobType: "Full Time", jobSkills: []};
 	}
 
 	activate(params, routeConfig, navigationInstruction) {
