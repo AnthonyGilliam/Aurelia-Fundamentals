@@ -1,6 +1,7 @@
 import {inject} from 'aurelia-framework';
-import {ValidationRules, ValidationController} from 'aurelia-validation';
+import {ValidationRules, ValidationController, validateTrigger} from 'aurelia-validation';
 import {DataRepository} from 'services/dataRepository';
+import {BootstrapFormRenderer} from 'bootstrap-form-renderer'
 
 @inject(DataRepository, ValidationController)
 export class AddJob {
@@ -16,7 +17,14 @@ export class AddJob {
 		});
         this.dataRepository = dataRepository;
         this.valController = valController;
+        this.valController.validateTrigger = validateTrigger.change;
+        this.valController.addRenderer(new BootstrapFormRenderer());
         this.job = { jobType: "Full Time", jobSkills: []};
+		ValidationRules
+			.ensure(j => j.title)
+			.required()
+			.minLength(3)
+			.on(this.job);
 	}
 
 	activate(params, routeConfig, navigationInstruction) {
@@ -25,10 +33,8 @@ export class AddJob {
 
 	save() {
 		if (this.job.needDate) {
-		this.job.needDate = new Date(this.job.needDate);
+			this.job.needDate = new Date(this.job.needDate);
 		}
 		this.dataRepository.addJob(this.job).then(job=> this.router.navigateToRoute('jobs'));
 	}
-
-
 }

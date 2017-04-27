@@ -1,6 +1,5 @@
 import 'bootstrap';
 import {ViewLocator} from 'aurelia-framework';
-import {DataCache} from 'dataCache';
 
 export function configure(aurelia) {
     //TODO: Create actual cache for queried data
