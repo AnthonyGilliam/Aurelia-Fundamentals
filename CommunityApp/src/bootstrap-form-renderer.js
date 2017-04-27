@@ -6,8 +6,8 @@ import {
 
 export class BootstrapFormRenderer {
     anyErrors = nodeList => {
-        let text = '';
-        nodeList.forEach(node => text += node.innerText)
+        let text = [];
+        nodeList.forEach(node => text.push(node.innerText))
         return text;
     };
 
