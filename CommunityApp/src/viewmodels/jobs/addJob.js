@@ -17,13 +17,19 @@ export class AddJob {
 		});
         this.dataRepository = dataRepository;
         this.valController = valController;
-        this.valController.validateTrigger = validateTrigger.change;
+        this.valController.validateTrigger = validateTrigger.changeOrBlur;
         this.valController.addRenderer(new BootstrapFormRenderer());
         this.job = { jobType: "Full Time", jobSkills: []};
+        ValidationRules.customRule(
+            'notCEO',
+            (value, object) => value !== 'CEO',
+            `nice try, \${$displayName} cannot be \${$value}`
+        );
 		ValidationRules
 			.ensure(j => j.title)
 			.required()
 			.minLength(3)
+            .satisfiesRule('notCEO')
 			.on(this.job);
 	}
 
@@ -32,6 +38,10 @@ export class AddJob {
 	}
 
 	save() {
+		if(this.valController.errors && this.valController.errors.length > 0) {
+         	alert('FIX THE ERRORS ON THE FORM!')
+            return; //There are validation errors in the form
+        }
 		if (this.job.needDate) {
 			this.job.needDate = new Date(this.job.needDate);
 		}
