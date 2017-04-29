@@ -24,6 +24,7 @@ System.config({
     "aurelia-http-client": "npm:aurelia-http-client@1.1.1",
     "aurelia-pal-browser": "npm:aurelia-pal-browser@1.1.0",
     "aurelia-validation": "npm:aurelia-validation@1.0.0",
+    "aurelia-event-aggregator": "npm:aurelia-event-aggregator@1.0.1",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "bootstrap": "github:twbs/bootstrap@3.3.7",

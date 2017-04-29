@@ -1,17 +1,25 @@
 import {inject} from 'aurelia-framework';
 import {HttpClient as AjaxClient} from 'aurelia-http-client';
 import {HttpClient as FetchClient, json} from 'aurelia-fetch-client';
+import {EventAggregator as PubSub} from 'aurelia-event-aggregator';
+import {BackgroundNotification} from 'common/backgroundNotification';
 import {states, jobTypes, jobSkills} from 'services/jobsData';
 import moment from 'moment';
 
 let _events = undefined;
 
-@inject('apiRoot', AjaxClient, FetchClient)
+@inject('apiRoot', AjaxClient, FetchClient, PubSub, BackgroundNotification)
 export class DataRepository {
-    constructor(apiRoot, ajaxClient, fetchClient){
+    constructor(apiRoot, ajaxClient, fetchClient, pubSub, backgroundNotification){
         this.apiRoot = apiRoot;
         this.ajaxClient = ajaxClient;
         this.fetchClient = fetchClient;
+        this.pubSub = pubSub;
+        setTimeout(() => this.backgroundNotificationReceived(this.pubSub), 5000)
+    }
+
+    backgroundNotificationReceived(pubSub) {
+        pubSub.publish(BackgroundNotification.received, moment().format('HH:mm:ss'));
     }
 
     get events() {

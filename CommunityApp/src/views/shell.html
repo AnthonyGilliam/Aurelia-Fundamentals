@@ -27,6 +27,9 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 <div class='container'>
+	<div style="background: lightgreen" show.bind="notification" click.delegate="clearNotification()">
+		Notification received: ${notification}
+	</div>
 	<div class='col-xs-10'>
 		<router-view></router-view>
 	</div>

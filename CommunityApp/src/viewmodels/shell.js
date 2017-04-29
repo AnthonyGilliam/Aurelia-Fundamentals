@@ -1,5 +1,18 @@
+import {inject} from 'aurelia-framework';
+import {EventAggregator as PubSub} from 'aurelia-event-aggregator';
+import {BackgroundNotification} from 'common/backgroundNotification';
+
+@inject(PubSub)
 export class Shell {
-	constructor() {
+	constructor(pubSub) {
+		this.pubSub = pubSub;
+		this.pubSub.subscribe(BackgroundNotification.received, time => {
+			this.notification = time;
+		});
+	}
+
+	clearNotification() {
+		this.notification = null;
 	}
 
 	configureRouter(config, router) {
