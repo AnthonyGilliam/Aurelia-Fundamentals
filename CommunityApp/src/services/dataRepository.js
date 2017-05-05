@@ -8,18 +8,19 @@ import moment from 'moment';
 
 let _events = undefined;
 
-@inject('apiRoot', AjaxClient, FetchClient, PubSub, BackgroundNotification)
+@inject('apiRoot', AjaxClient, FetchClient, PubSub)
 export class DataRepository {
-    constructor(apiRoot, ajaxClient, fetchClient, pubSub, backgroundNotification){
+    constructor(apiRoot, ajaxClient, fetchClient, pubSub){
         this.apiRoot = apiRoot;
         this.ajaxClient = ajaxClient;
         this.fetchClient = fetchClient;
         this.pubSub = pubSub;
-        setTimeout(() => this.backgroundNotificationReceived(this.pubSub), 5000)
-    }
-
-    backgroundNotificationReceived(pubSub) {
-        pubSub.publish(BackgroundNotification.received, moment().format('HH:mm:ss'));
+        setTimeout(() =>
+                pubSub.publish(BackgroundNotification.received, moment().format('HH:mm:ss'))
+                , 5000);
+        this.pubSub.subscribe(BackgroundNotification.received, time => {
+            console.info(`Background Notification received on ${time}`);
+        });
     }
 
     get events() {

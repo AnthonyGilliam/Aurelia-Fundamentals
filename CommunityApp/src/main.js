@@ -11,7 +11,7 @@ export function configure(aurelia) {
         .plugin('aurelia-dialog')
         .plugin('aurelia-validation');
 
-    aurelia.use.instance("apiRoot", "http://localhost:27092/");
+    aurelia.use.instance("apiRoot", "http://brianapidemos.azurewebsites.net/CommunityApi/");
 
     ViewLocator.prototype.convertOriginToViewUrl = (origin) => {
         let viewModelUrl = origin.moduleId;
