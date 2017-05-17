@@ -30,11 +30,10 @@ export class DataRepository {
             } else {
                 this.ajaxClient.get(this.apiRoot + 'api/events')
                     .then(response => {
-                        _events = response.content;
-                        _events.forEach(event => {
-                            event.dateime = moment(event.dateTime).format("MM/DD/YYYY HH:mm");
-                            event.image = `images/speakers/${event.image}`;
-                        });
+                        var data = JSON.parse(response.content);
+                        _events = data
+                            .sort((a,b) => a.dateTime >= b.dateTime ? 1 : -1)
+                            .forEach(item => item.isMvp = item.name == "Brian Noyes" ? true : false);
                         resolve(_events);
                     })
                     .catch(reason => reject(reason));

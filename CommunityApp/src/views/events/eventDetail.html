@@ -1,11 +1,12 @@
 <template>
+    <require from="common/speakerImage"></require>
     <div class="row">
-        <div class="col-md-1">
-            <img src.bind="event.image" style='width:100%;max-width:200px'/>
+        <div class="col-md-3">
+            <img speaker-img="${event.image}" style='width:100%;max-width:200px'/>
         </div>
-        <div class="col-md-11">
+        <div class="col-md-9">
             <h3>${event.title}</h3>
-            <h5>${event.dateTime}</h5>
+            <h5>${event.dateTime | dateFormat:'MM/DD/YYYY h:mm a'}</h5>
             <button click.delegate="editEvent(event)" type="button">Edit</button>
         </div>
     </div>

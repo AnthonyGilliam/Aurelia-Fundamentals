@@ -1,5 +1,4 @@
 <template>
-	<require from="common/date-format"></require>
 	<h3>Job Listings</h3>
 	<button type='button' click.delegate='addJob()'><img src="images/Add-New.png"/></button>
 	<table class="table table-striped">
@@ -14,7 +13,7 @@
 		<tbody>
 			<tr repeat.for='job of jobs'>
 				<td>${job.title}</td>
-				<td>${job.needDate | dateFormat:'MM/DD/YYYY h:mm a'}</td>
+				<td>${job.needDate | dateFormat}</td>
 				<td>${job.location.city},${job.location.state}</td>
 				<td>${job.jobSkills.join(', ')}</td>
 			</tr>

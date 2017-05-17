@@ -30,7 +30,7 @@ System.config({
     "bootstrap": "github:twbs/bootstrap@3.3.7",
     "core-js": "npm:core-js@1.2.7",
     "moment": "npm:moment@2.17.1",
-    "github:jspm/nodelibs-assert@0.1.0": {
+      "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {

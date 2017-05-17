@@ -1,7 +1,11 @@
 <template>
 	<require from="bootstrap/css/bootstrap.css"></require>
 	<require from="common/nav-bar"></require>
-	<nav-bar></nav-bar>
+	<nav-bar router.bind="router">
+		<template replace-part="logo">
+			<img src="http://aurelia.io/images/main-logo.svg" alt="Aurelia" title="Aurelia" />
+		</template>
+	</nav-bar>
 	<div class='container'>
 		<div style="background: lightgreen" show.bind="notification" click.delegate="clearNotification()">
 			Notification received: ${notification}
