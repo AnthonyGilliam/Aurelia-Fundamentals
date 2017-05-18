@@ -1,4 +1,5 @@
 <template>
+	<require from="common/itemsControl"></require>
 	<h3>Job Listings</h3>
 	<button type='button' click.delegate='addJob()'><img src="images/Add-New.png"/></button>
 	<table class="table table-striped">
@@ -8,7 +9,7 @@
 				<th>Need Date</th>
 				<th>Location</th>
 				<th>Technologies</th>
-			</tr>	
+			</tr>
 		</thead>
 		<tbody>
 			<tr repeat.for='job of jobs'>
@@ -19,4 +20,10 @@
 			</tr>
 		</tbody>
 	</table>
+	<div items-control.bind="jobs">
+		<div class="rbox">
+			<h2>${title}</h2>
+			<h2>${description}</h2>
+		</div>
+	</div>
 </template>
