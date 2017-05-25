@@ -1,0 +1,1 @@
+{"version":3,"sources":["common/backgroundNotification.js"],"names":["Event","BackgroundNotification","received","dropped"],"mappings":";;;;;;AAAOA,W;;;wCAEMC,sB,GAAyB;AACpCC,kBAAU,IAAIF,KAAJ,CAAU,wBAAV,EAAoC,UAApC,CAD0B;AAEpCG,iBAAS,IAAIH,KAAJ,CAAU,wBAAV,EAAoC,SAApC;AAF2B,O","file":"backgroundNotification.js","sourceRoot":"/src"}

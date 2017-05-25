@@ -1,5 +1,4 @@
 import {containerless, bindable} from 'aurelia-framework';
-import $ from 'jquery';
 
 @containerless()
 export class NavBar {

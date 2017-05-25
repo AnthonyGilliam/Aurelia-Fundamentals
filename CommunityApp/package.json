@@ -1,4 +1,43 @@
 {
+  "name": "community-app",
+  "version": "1.0.0",
+  "description": "Demo Aurelia project for PluralSight's Aurelia Fundamentals course.",
+  "keywords": [
+    "aurelia",
+    "pluralsight"
+  ],
+  "devDependencies": {
+    "aurelia-bundler": "^0.6.0",
+    "aurelia-tools": "^1.0.0",
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.0",
+    "babel-plugin-istanbul": "^2.0.3",
+    "babel-plugin-syntax-flow": "^6.18.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-flow-strip-types": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-stage-1": "^6.16.0",
+    "browser-sync": "^2.18.12",
+    "conventional-changelog": "^1.1.3",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-bump": "^2.7.0",
+    "gulp-changed": "^3.1.0",
+    "gulp-eslint": "^3.0.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "jspm": "^0.16.53",
+    "object.assign": "^4.0.4",
+    "require-dir": "^0.3.1",
+    "run-sequence": "^1.2.2",
+    "vinyl-paths": "^2.1.0",
+    "yargs": "^8.0.1"
+  },
   "jspm": {
     "dependencies": {
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^2.0.1",
@@ -10,12 +49,16 @@
       "aurelia-pal-browser": "npm:aurelia-pal-browser@^1.1.0",
       "aurelia-validation": "npm:aurelia-validation@^1.0.0",
       "bootstrap": "github:twbs/bootstrap@^3.3.7",
-      "moment": "npm:moment@^2.17.1"
+      "core-js": "npm:core-js@^2.4.1",
+      "fetch": "github:github/fetch@^2.0.3",
+      "moment": "npm:moment@^2.17.1",
+      "text": "github:systemjs/plugin-text@^0.0.9",
+      "toastr": "github:CodeSeven/toastr@^2.1.3"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4"
+      "core-js": "npm:core-js@^2.4.1"
     }
   }
 }

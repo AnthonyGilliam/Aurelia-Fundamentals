@@ -1,0 +1,1 @@
+{"version":3,"sources":["common/pubSubEvent.js"],"names":["Event","subject","action"],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;+BAAqBA,K;AACjB,+BAAYC,OAAZ,EAAqBC,MAArB,EAA4B;AAAA;;AACxB,yBAAKD,OAAL,GAAeA,OAAf;AACA,yBAAKC,MAAL,GAAcA,MAAd;AACH;;;;wCACU;AAAE,qCAAW,KAAKD,OAAhB,SAA2B,KAAKC,MAAhC;AAA2C;;;;;;+BALvCF,K","file":"pubSubEvent.js","sourceRoot":"/src"}
