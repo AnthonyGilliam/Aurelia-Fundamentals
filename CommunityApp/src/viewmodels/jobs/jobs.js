@@ -7,6 +7,10 @@ export class Jobs {
 		this.dataRepository = dataRepository;
 	}
 
+	canActivate(){
+		return false;
+	}
+
 	activate(params, routeConfig, navigationInstruction) {
 		this.jobs = [];
 		this.router = navigationInstruction.router;
