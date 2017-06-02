@@ -8,7 +8,7 @@ module.exports = {
       ],
       "options": {
         "inject": true,
-        "minify": false,
+        "minify": true,
         "depCache": true,
         "rev": false
       }

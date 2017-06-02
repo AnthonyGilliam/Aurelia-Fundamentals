@@ -1,6 +1,6 @@
 System.config({
   defaultJSExtensions: true,
-  transpiler: false,
+  transpiler: "babel",
   babelOptions: {
     "optional": [
       "runtime",
@@ -10,11 +10,12 @@ System.config({
     ]
   },
   paths: {
-    "*": "dist/*",
+    "*": "src/*",
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
   buildCSS: false,
+
   map: {
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@2.0.1",
     "aurelia-dialog": "npm:aurelia-dialog@1.0.0-beta.3.0.1",
@@ -29,12 +30,13 @@ System.config({
     "bootstrap": "github:twbs/bootstrap@3.3.7",
     "core-js": "npm:core-js@2.4.1",
     "fetch": "github:github/fetch@2.0.3",
+    "font-awesome": "npm:font-awesome@4.7.0",
     "jquery": "npm:jquery@3.2.1",
     "moment": "npm:moment@2.17.1",
     "text": "github:systemjs/plugin-text@0.0.9",
     "toastr": "github:CodeSeven/toastr@2.1.3",
     "github:CodeSeven/toastr@2.1.3": {
-      "css": "github:systemjs/plugin-css@0.1.33",
+      "css": "github:systemjs/plugin-css@0.1.35",
       "jquery": "npm:jquery@3.2.1"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -209,6 +211,9 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
+    },
+    "npm:font-awesome@4.7.0": {
+      "css": "github:systemjs/plugin-css@0.1.35"
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"

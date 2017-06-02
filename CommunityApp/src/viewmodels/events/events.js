@@ -18,9 +18,9 @@ export class Events {
     }
 
 	activate(params) {
-        this.repo.getEvents().then(events => {
+        return this.repo.getEvents().then(events => {
             if(params.speaker || params.topic) {
-            	var filteredResults = [];
+            	let filteredResults = [];
             	events.forEach(event => {
             		if(params.speaker && event.speaker.toLowerCase().indexOf(params.speaker.toLowerCase()) >= 0) {
             			filteredResults.push(event);

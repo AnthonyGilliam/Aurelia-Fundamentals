@@ -51,6 +51,7 @@
       "bootstrap": "github:twbs/bootstrap@^3.3.7",
       "core-js": "npm:core-js@^2.4.1",
       "fetch": "github:github/fetch@^2.0.3",
+      "font-awesome": "npm:font-awesome@^4.7.0",
       "moment": "npm:moment@^2.17.1",
       "text": "github:systemjs/plugin-text@^0.0.9",
       "toastr": "github:CodeSeven/toastr@^2.1.3"
