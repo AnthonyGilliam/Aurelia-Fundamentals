@@ -8,7 +8,7 @@ module.exports = {
       ],
       "options": {
         "inject": true,
-        "minify": true,
+        "minify": false,
         "depCache": true,
         "rev": false
       }
@@ -18,6 +18,7 @@ module.exports = {
         "aurelia-framework",
         "aurelia-bootstrapper",
         "aurelia-dialog",
+        "aurelia-dialog/*/**/*.html!text",
         "aurelia-event-aggregator",
         "aurelia-fetch-client",
         "aurelia-http-client",
