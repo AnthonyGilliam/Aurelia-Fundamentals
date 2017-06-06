@@ -7,9 +7,13 @@ export class Jobs {
 		this.dataRepository = dataRepository;
 	}
 
+/*
 	canActivate(){
-		return false;
+		return new Promise(resolve => {
+			setTimeout(_ => resolve(false), 3000);
+		});
 	}
+*/
 
 	activate(params, routeConfig, navigationInstruction) {
 		this.jobs = [];

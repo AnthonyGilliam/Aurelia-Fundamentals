@@ -252,7 +252,7 @@ System.config({
       "viewmodels/jobs/addJob.js",
       "viewmodels/jobs/jobs.js",
       "viewmodels/shell.js",
-      "viewmodels/sponsors/sponsors.js",
+      "viewmodels/sideBar/sideBar.js",
       "views/discussion/discussion.html!github:systemjs/plugin-text@0.0.9.js",
       "views/events/editDialog.html!github:systemjs/plugin-text@0.0.9.js",
       "views/events/event.html!github:systemjs/plugin-text@0.0.9.js",
@@ -261,7 +261,7 @@ System.config({
       "views/jobs/addJob.html!github:systemjs/plugin-text@0.0.9.js",
       "views/jobs/jobs.html!github:systemjs/plugin-text@0.0.9.js",
       "views/shell.html!github:systemjs/plugin-text@0.0.9.js",
-      "views/sponsors/sponsors.html!github:systemjs/plugin-text@0.0.9.js"
+      "views/sideBar/sideBar.html!github:systemjs/plugin-text@0.0.9.js"
     ],
     "aurelia.js": [
       "github:CodeSeven/toastr@2.1.3.js",

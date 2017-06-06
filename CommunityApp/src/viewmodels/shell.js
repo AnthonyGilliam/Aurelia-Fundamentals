@@ -19,12 +19,36 @@ export class Shell {
 		this.router = router;
 		config.title = "Capital Area .NET User Group";
 		config.map([/* '/' defines the default route used in the shell */
-			{ route: ['/', 'events'], moduleId: 'viewmodels/events/events', name: 'events', title: 'Events', nav: true },
-			{ route: 'jobs', moduleId: 'viewmodels/jobs/jobs', name: 'jobs', title: 'Jobs', nav: true },
-			{ route: 'addJob', moduleId: 'viewmodels/jobs/addJob', name: 'addJob' },
-			{ route: 'discussion', moduleId: 'viewmodels/discussion/discussion', name: 'discussion', title: 'Discussion'
-				, nav: true },
-			{ route: 'eventDetail/:eventId', moduleId: 'viewmodels/events/eventDetail', name: 'eventDetail' }
+			{ route: ['/', 'events'], name: 'events', title: 'Events', nav: true,
+				viewPorts: {
+					mainContent: { moduleId: 'viewmodels/events/events' },
+					sideBar: { moduleId: 'viewmodels/sideBar/sponsors' },
+				}
+			},
+			{ route: 'jobs', name: 'jobs', title: 'Jobs', nav: true,
+                viewPorts: {
+                    mainContent: { moduleId: 'viewmodels/jobs/jobs' },
+                    sideBar: { moduleId: 'viewmodels/sideBar/sponsors' },
+                }
+            },
+			{ route: 'addJob', name: 'addJob',
+                viewPorts: {
+                    mainContent: { moduleId: 'viewmodels/jobs/addJob' },
+                    sideBar: { moduleId: 'viewmodels/sideBar/ads' },
+                }
+			},
+			{ route: 'discussion', name: 'discussion', title: 'Discussion', nav: true,
+                viewPorts: {
+                    mainContent: { moduleId: 'viewmodels/discussion/discussion' },
+                    sideBar: { moduleId: 'viewmodels/sideBar/ads' },
+                }
+			},
+			{ route: 'eventDetail/:eventId', name: 'eventDetail',
+                viewPorts: {
+                    mainContent: { moduleId: 'viewmodels/events/eventDetail' },
+                    sideBar: { moduleId: 'viewmodels/sideBar/ads' },
+                }
+			}
 		]);
 	}
 }
