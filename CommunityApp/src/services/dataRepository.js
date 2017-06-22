@@ -6,7 +6,21 @@ import {BackgroundNotification} from 'common/backgroundNotification';
 import {states, jobTypes, jobSkills} from 'services/jobsData';
 import moment from 'moment';
 
-let _events = undefined;
+let _events;
+
+function filterAndFormat(pastOrFuture, events){
+    "use strict";
+    let results = JSON.parse(JSON.stringify(events));
+    switch(pastOrFuture){
+        case 'past':
+            results = results.filter(item => moment(item.dateTime) < moment());
+            break;
+        case 'future':
+            results = results.filter(item => moment(item.dateTime) > moment());
+            break;
+    }
+    return results;
+}
 
 @inject('apiRoot', AjaxClient, FetchClient, PubSub)
 export class DataRepository {
@@ -23,36 +37,41 @@ export class DataRepository {
         });
     }
 
-    get events() {
+    getEvents(pastOrFuture) {
         return new Promise((resolve, reject) => {
             if (_events) {
-                resolve(_events);
+                resolve(filterAndFormat(pastOrFuture, _events));
             } else {
                 this.ajaxClient.get(this.apiRoot + 'api/events')
                     .then(response => {
-                        let data = response.responseType === 'json'
-                            ? response.content
-                            : JSON.parse(response.content);
-                        _events = data.sort((a,b) => a.dateTime >= b.dateTime ? 1 : -1);
-                        _events.forEach(item => item.isMvp = item.speaker === "Brian Noyes");
-                        resolve(_events);
+                        this.formatEvents(response);
+                        resolve(filterAndFormat(pastOrFuture,_events));
                     })
                     .catch(reason => reject(reason));
             }
         });
     }
-    set events(value){
-        _events = value;
-    }
-
-    getEvents() {
-        return this.events;
-    }
 
     getEvent(id) {
-        return this.events
-            .then(events => events.find(event => event.id === id))
-            .catch(reason => console.log(`The DataRepository.getEvent(${id}) function failed with ${reason}`));
+        return new Promise((resolve, reject) => {
+            if (_events)
+                resolve(_events.find(event => event.id === id));
+            else
+                this.ajaxClient.get(this.apiRoot + 'api/events')
+                    .then(response => {
+                        this.formatEvents(response);
+                        resolve(_events.find(event => event.id === id));
+                    })
+                    .catch(reason => console.log(`The DataRepository.getEvent(${id}) function failed with ${reason}`));
+        });
+    }
+
+    formatEvents(response) {
+        let data = response.responseType === 'json'
+            ? response.content
+            : JSON.parse(response.content);
+        _events = data.sort((a, b) => a.dateTime >= b.dateTime ? 1 : -1);
+        _events.forEach(item => item.isMvp = item.speaker === "Brian Noyes");
     }
 
     getJobs() {
