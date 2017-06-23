@@ -18,6 +18,8 @@ export class Shell {
 	configureRouter(config, router) {
 		this.router = router;
 		config.title = "Capital Area .NET User Group";
+        config.options.pushState = true;
+        config.options.root = '/';
 		config.map([/* '/' defines the default route used in the shell */
 			{ route: ['/', 'events'], name: 'events', title: 'Events', nav: true,
 				viewPorts: {

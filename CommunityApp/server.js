@@ -1,9 +1,14 @@
-var express = require('express');
-var app = express();
-app.use(express.static('./'));
-var server = app.listen(2112, function () {
-    var host = server.address().address;
-    var port = server.address().port;
+const port = '2112';
+let express = require('express'),
+    path = require('path'),
+    app = express();
 
-    console.log('Example app listening at http://%s:%s', host, port);
+app.use(express.static(__dirname));
+
+app.get('*', function(request, response){
+    response.sendFile(path.join(__dirname, 'index.html'));
 });
+
+app.listen(port);
+
+console.log(`server started on port :: ${port}`);

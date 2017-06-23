@@ -33,6 +33,7 @@
     "gulp-sourcemaps": "^2.6.0",
     "jspm": "^0.16.53",
     "object.assign": "^4.0.4",
+    "path": "^0.12.7",
     "require-dir": "^0.3.1",
     "run-sequence": "^1.2.2",
     "vinyl-paths": "^2.1.0",
