@@ -20,6 +20,10 @@ export class Shell {
 		config.title = "Capital Area .NET User Group";
         config.options.pushState = true;
         config.options.root = '/';
+        config.addPipelineStep('authorize', LogNextStep);
+        config.addPipelineStep('preActivate', LogNextStep);
+        config.addPipelineStep('preRender', LogNextStep);
+        config.addPipelineStep('postRender', LogNextStep);
 		config.map([/* '/' defines the default route used in the shell */
 			{ route: ['/', 'events'], name: 'events', title: 'Events', nav: true,
 				viewPorts: {
@@ -52,5 +56,15 @@ export class Shell {
                 }
 			}
 		]);
+	}
+}
+
+class LogNextStep {
+	run(navigationInstruction, next) {
+		return next().then(result => {
+			//Next step and ALL downstream steps are complete
+			console.log(JSON.stringify(result));
+			return result;
+		});
 	}
 }
