@@ -13,13 +13,15 @@ function cloneObject(obj) {
 }
 
 export class Discussion {
+    canActivate(){
+        //Delay view for 3 sec to witness spinning cog icon in nav-bar.html custom view
+        return new Promise((resolve, reject) => { setTimeout(_ => reject('Page timed out'), 3000); });
+    }
+
     activate(){
         //retrieve discussionInput from data repo then clone it to compare with later
         this.discussionInput = getDiscussionInput();
         this.originalInput = cloneObject(this.discussionInput);
-
-        //Delay view for 3 sec to witness spinning cog icon in nav-bar.html custom view
-        return new Promise((resolve) => { setTimeout(_ => resolve(), 3000); });
     }
 
     save() {

@@ -1,6 +1,7 @@
 import {inject} from 'aurelia-framework';
 import {EventAggregator as PubSub} from 'aurelia-event-aggregator';
 import {BackgroundNotification} from 'common/backgroundNotification';
+import toastr from 'toastr';
 
 @inject(PubSub)
 export class Shell {
@@ -21,9 +22,13 @@ export class Shell {
         config.options.pushState = true;
         config.options.root = '/';
         config.addPipelineStep('authorize', LogNextStep);
+        config.addPipelineStep('authorize', NavToastStep);
         config.addPipelineStep('preActivate', LogNextStep);
+        config.addPipelineStep('preActivate', NavToastStep);
         config.addPipelineStep('preRender', LogNextStep);
+        config.addPipelineStep('preRender', NavToastStep);
         config.addPipelineStep('postRender', LogNextStep);
+        config.addPipelineStep('postRender', NavToastStep);
 		config.map([/* '/' defines the default route used in the shell */
 			{ route: ['/', 'events'], name: 'events', title: 'Events', nav: true,
 				viewPorts: {
@@ -67,4 +72,14 @@ class LogNextStep {
 			return result;
 		});
 	}
+}
+
+class NavToastStep {
+    run(navigationInstruction, next) {
+        return next().then(result => {
+            if(result.status === 'canceled')
+                toastr.error(`Navigation cancelled`);
+            return result;
+        });
+    }
 }
