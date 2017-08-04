@@ -3,6 +3,7 @@ export class Events {
         this.router = router;
         config.title = 'Events';
         config.map([
+            //Mapping route using Activation Strategy:
             { route: ['', 'future'], moduleId: 'viewmodels/events/eventsList', title: 'Future Events', nav: true,
                 //Use '#' in route only when NOT using PushState to normalize addresses
                 href: '/events/future', name: 'future' },
