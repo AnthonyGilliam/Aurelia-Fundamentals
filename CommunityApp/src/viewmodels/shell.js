@@ -21,6 +21,7 @@ export class Shell {
 		config.title = "Capital Area .NET User Group";
         config.options.pushState = true;
         config.options.root = '/';
+        config.addPipelineStep('authorize', TriggerLoadingStep);
         config.addPipelineStep('authorize', LogNextStep);
         config.addPipelineStep('authorize', NavToastStep);
         config.addPipelineStep('preActivate', LogNextStep);
@@ -62,6 +63,20 @@ export class Shell {
 			}
 		]);
 	}
+}
+
+@inject(PubSub)
+class TriggerLoadingStep {
+    constructor(pubSub){
+        this.pubSub = pubSub;
+    }
+    run(navigationInstruction, next) {
+        this.pubSub.publish('Loading/Init', navigationInstruction.router);
+        return next().then(result => {
+            this.pubSub.publish('Loading/Done');
+            return result;
+        });
+    }
 }
 
 class LogNextStep {
