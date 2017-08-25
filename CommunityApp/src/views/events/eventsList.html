@@ -3,6 +3,8 @@
 		.nav-tabs li a { font-size: 20px; }
 	</style>
 	<div repeat.for="event of events">
+		<div>Index: ${$index}, First: ${$first}, Last: ${$last}, Even: ${$even}, Odd: ${$odd}</div>
+		<div>${$parent.whoAreYou}</div>
 		<compose model.bind="event" view="views/events/event.html"></compose>
 	</div>
 	<div>

@@ -7,6 +7,7 @@ export class EventsList {
 	constructor(repo, router) {
 		this.repo = repo;
 		this.router = router;
+		this.whoAreYou = "Luke, I am your father.";
 	}
 
     goToDiscussion(){
