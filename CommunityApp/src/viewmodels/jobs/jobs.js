@@ -7,13 +7,15 @@ export class Jobs {
 		this.dataRepository = dataRepository;
 	}
 
-/*
-	canActivate(){
-		return new Promise(resolve => {
-			setTimeout(_ => resolve(false), 3000);
-		});
-	}
-*/
+    canActivate(params, routeConfig, navigationInstruction) {
+    	//Deliberation based on database results
+		//...
+		return new Promise((resolve) => {
+    		setTimeout(_ => {
+    			resolve(true);
+    		}, 3000);
+    	});
+    }
 
 	activate(params, routeConfig, navigationInstruction) {
 		this.jobs = [];
@@ -32,12 +34,3 @@ export class Jobs {
 	}
 
 }
-
-	// canActivate(params, routeConfig, navigationInstruction) {
-	// 	var promise = new Promise((resolve, reject) => {
-	// 		setTimeout(_ => {
-	// 			resolve(false);
-	// 		},3000);
-	// 	});
-	// 	return promise;
-	// }

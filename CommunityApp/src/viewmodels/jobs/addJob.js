@@ -37,6 +37,10 @@ export class AddJob {
 		this.router = navigationInstruction.router;
 	}
 
+	inputChanged(x){
+        console.log(x);
+    }
+
 	save() {
 		this.valController.validate()
 			.then(result => {
