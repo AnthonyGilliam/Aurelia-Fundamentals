@@ -37,8 +37,8 @@ export class AddJob {
 		this.router = navigationInstruction.router;
 	}
 
-	inputChanged(x){
-        console.log(x);
+	inputChanged(element){
+        console.log(`Element ID is: ${element.id}\nElement name is: ${element.name}`);
     }
 
 	save() {
