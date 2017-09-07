@@ -1,5 +1,6 @@
 import {inject, NewInstance} from 'aurelia-framework';
 import {ValidationRules, ValidationController, validateTrigger} from 'aurelia-validation';
+import $ from 'jquery';
 import {DataRepository} from 'services/dataRepository';
 import {BootstrapFormRenderer} from 'common/bootstrap-form-renderer';
 
@@ -39,6 +40,12 @@ export class AddJob {
 
 	inputChanged(element){
         console.log(`Element ID is: ${element.id}\nElement name is: ${element.name}`);
+        //Our good ol' friend JQUERY!!! YAY! :)
+        var $element = $(element);
+        $element.closest('div').css('background', 'blue');
+        setTimeout(_ =>
+            $element.closest('div').css('background', 'transparent')
+        , 50);
     }
 
 	save() {
