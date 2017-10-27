@@ -16,23 +16,22 @@
   			<input type="text" id="needDate" 
         value.bind="job.needDate | dateFormat:'MM/YYYY' & updateTrigger:'blur'" placeholder="Need Date" />
   		</div>
-    <div class="form-group">
-      <label for="jobType">Job Type: </label>
-      <label repeat.for="jobType of jobTypes">
-		  <!--Either ref value or $event.target can be used to pass element to view model function-->
-		  <input type="radio" name="jobType" value.bind="jobType" checked.bind="$parent.job.jobType" change.delegate="inputChanged($event.target)"/>
-        ${jobType}  
-      </label>
-    </div>
-    <div class="form-group">
-      <label>Job Skills:</label>
-      <label repeat.for="jobSkill of jobSkills">
-		  <!--Either ref value or $event.target can be used to pass element to view model function-->
-          <input type="checkbox" value.bind="jobSkill" checked.bind="$parent.job.jobSkills" change.delegate="inputChanged($event.target)" />
-          ${jobSkill}
-	  </label>
-    </div>
-
+		<div class="form-group">
+		  <label for="jobType">Job Type: </label>
+		  <label repeat.for="jobType of jobTypes">
+			  <!--Either ref value or $event.target can be used to pass element to view model function-->
+			  <input type="radio" name="jobType" value.bind="jobType" checked.bind="$parent.job.jobType" change.delegate="inputChanged($event.target)"/>
+			${jobType}
+		  </label>
+		</div>
+		<div class="form-group">
+		  <label>Job Skills:</label>
+		  <label repeat.for="jobSkill of jobSkills">
+			  <!--Either ref value or $event.target can be used to pass element to view model function-->
+			  <input type="checkbox" value.bind="jobSkill" checked.bind="$parent.job.jobSkills" change.delegate="inputChanged($event.target)" />
+			  ${jobSkill}
+		  </label>
+		</div>
   		<div class="form-group">
   			<label for="city">City</label>
   			<input type="text" id="city" value.bind="job.location.city" placeholder="City" />
