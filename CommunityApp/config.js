@@ -16,7 +16,6 @@ System.config({
     "npm:*": "jspm_packages/npm/*"
   },
   buildCSS: false,
-
   map: {
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@2.0.1",
     "aurelia-dialog": "npm:aurelia-dialog@1.0.0-beta.3.0.1",

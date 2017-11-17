@@ -12,7 +12,7 @@ export function configure(aurelia) {
         .plugin('aurelia-validation');
 
     aurelia.use.instance("apiRoot", "http://brianapidemos.azurewebsites.net/CommunityApi/");
-    aurelia.use.globalResources('common/date-format');
+    aurelia.use.globalResources('common/dateFormat');
 
     ViewLocator.prototype.convertOriginToViewUrl = (origin) => {
         let viewModelUrl = origin.moduleId;

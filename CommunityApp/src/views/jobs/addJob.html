@@ -1,5 +1,5 @@
 <template>
-	<require from="common/date-format"></require>
+	<require from="common/dateFormat"></require>
 	<form submit.delegate='save()'>
 		<div class="form-group">
     		<label for="title">Title</label>
@@ -14,7 +14,7 @@
   		<div class="form-group">
   			<label for="needDate">Need Date</label>
   			<input type="text" id="needDate" 
-        value.bind="job.needDate | dateFormat:'MM/YYYY' & updateTrigger:'blur'" placeholder="Need Date" />
+        value.bind="job.needDate | dateFormat:'MM/DD/YYYY' & updateTrigger:'blur'" placeholder="Need Date" />
   		</div>
 		<div class="form-group">
 		  <label for="jobType">Job Type: </label>

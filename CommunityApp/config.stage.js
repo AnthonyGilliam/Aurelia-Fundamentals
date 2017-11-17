@@ -234,7 +234,7 @@ System.config({
       "common/backgroundNotification.js",
       "common/bootstrap-form-renderer.js",
       "common/dataCache.js",
-      "common/date-format.js",
+      "common/dateFormat.js",
       "common/imLazy.js",
       "common/itemsControl.js",
       "common/nav-bar.html!github:systemjs/plugin-text@0.0.9.js",
@@ -401,7 +401,7 @@ System.config({
     "common/bootstrap-form-renderer.js": [
       "aurelia-validation"
     ],
-    "common/date-format.js": [
+    "common/dateFormat.js": [
       "moment"
     ],
     "common/itemsControl.js": [
