@@ -2,6 +2,7 @@ import {inject} from 'aurelia-framework';
 import {EventAggregator as PubSub} from 'aurelia-event-aggregator';
 import {BackgroundNotification} from 'common/backgroundNotification';
 import toastr from 'toastr';
+import moment from 'moment';
 
 @inject(PubSub)
 export class Shell {
@@ -10,6 +11,8 @@ export class Shell {
 		this.pubSub.subscribe(BackgroundNotification.received, time => {
 			this.notification = time;
 		});
+		setInterval(() => this.timeIs = moment().format("hh:mm:ss.SSS"), 100);
+		this.throttleInterval = 1000
 	}
 
 	clearNotification() {

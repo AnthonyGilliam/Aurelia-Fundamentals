@@ -14,7 +14,9 @@
   		<div class="form-group">
   			<label for="needDate">Need Date</label>
   			<input type="text" id="needDate" 
-        value.bind="job.needDate | dateFormat:'MM/DD/YYYY' & updateTrigger:'blur'" placeholder="Need Date" />
+        value.bind="job.needDate | dateFormat:'MM/DD/YYYY' & updateTrigger:'paste':'blur'" placeholder="Need Date" />
+			&nbsp;&nbsp;
+			${job.needDate}
   		</div>
 		<div class="form-group">
 		  <label for="jobType">Job Type: </label>

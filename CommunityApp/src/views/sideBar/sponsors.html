@@ -2,7 +2,7 @@
 	<div textContent.bind="message"></div>
 	<button type="button" click.delegate="doSomething(message)">Click Me</button>
 	<input type="text" ref="input1" css="background:${customerStatus == 'bad' ? 'red' : ''}">
-	<div style.bind="styleString">${input1.value}</div><!--This <div> displays the ref value of the <input> above-->
+	<div style.bind="styleString">${input1.value & debounce:1000}</div><!--This <div> displays the ref value of the <input> above-->
 	<div style.bind="styleObject" repeat.for="[key, value] of mapCollection">${key}: ${value}</div>
 	<input type="text" value.bind="person.firstName">
 	<input type="text" value.bind="person.lastName">
