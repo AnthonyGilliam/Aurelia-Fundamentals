@@ -16,3 +16,9 @@
     right: 20px;
     top: 5px;
 }
+
+.feed {
+    max-height: 10em;
+    overflow: hidden;
+    width: 174px;
+}

@@ -1,6 +1,9 @@
-import {computedFrom} from 'aurelia-framework';
+import {inject, computedFrom} from 'aurelia-framework';
+import {BindingSignaler} from 'aurelia-templating-resources';
+
+@inject(BindingSignaler)
 export class Sponsors {
-	constructor() {
+	constructor(bindingSignaler) {
         this.message = "Sponsors";
         setTimeout(() => this.message = "Changed after binding", 3000);
         this.mapCollection = new window.Map();
@@ -13,6 +16,16 @@ export class Sponsors {
         this.customerColor = 'purple';
         this.customerStatus = 'bad';
         this.person = new Person();
+        let amount = 99.93;
+        this.trades = [{ amount: amount, time: new Date() }];
+        //feed numberFeed
+        setInterval(() => {
+                this.trades.push({amount: amount += 1.79, time: new Date()});
+                this.numberFeed.scrollTop = this.numberFeed.scrollHeight;
+            }, 3000
+        );
+        //Change colors on old numbers in numberFeed
+        setInterval(() =>  bindingSignaler.signal('check-freshness') , 1000);
     }
 
 	doSomething(message) {

@@ -7,4 +7,10 @@
 	<input type="text" value.bind="person.firstName">
 	<input type="text" value.bind="person.lastName">
 	${person.fullName}
+	<require from="common/freshness"></require>
+	<div ref="numberFeed" class="feed">
+		<div repeat.for="trade of trades" css="background: ${trade.time | freshness & signal:'check-freshness'}">
+			${trade.amount}
+		</div>
+	</div>
 </template>
