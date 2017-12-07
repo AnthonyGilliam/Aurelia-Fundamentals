@@ -13,4 +13,7 @@
 			${trade.amount}
 		</div>
 	</div>
+	<require from="common/interceptor"></require>
+	<input type="text" value.bind="someProperty & debounce:1000 & interceptor:myinterceptor" />
+	<div>${someProperty}</div>
 </template>

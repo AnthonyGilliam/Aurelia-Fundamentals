@@ -26,11 +26,17 @@ export class Sponsors {
         );
         //Change colors on old numbers in numberFeed
         setInterval(() =>  bindingSignaler.signal('check-freshness') , 1000);
+        this.someProperty = '';
     }
 
 	doSomething(message) {
 		console.log(message);
 	}
+
+	myinterceptor(method, update, value){
+	    console.log(value);
+	    update(value);
+    }
 }
 
 class Person {
