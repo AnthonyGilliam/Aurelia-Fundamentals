@@ -1,21 +1,22 @@
 <template>
-	<div class="bg-success rbox">
-		<table>
-			<tr>
-				<td>
-					<a href.bind="event.detailUrl">
-						<h3 textContent.bind="event.title"></h3>
-					</a>
-				</td>
-			<tr>
-				<td>
-					<h5>${event.dateTime | dateFormat: 'MM/DD/YYYY h:mm a'}</h5>
-				</td>
-			</tr>
-			<tr>
-				<td innerHTML.bind='event.description | sanitizeHTML'></td>
-			</tr>
-		</table>
-		<div textContent.two-way="event.description" contenteditable="true"></div>
+	<div class="bg-success rbox row ${event.isFav ? 'fav' : ''}">
+		<header class="col-xs-12">
+			<a href.bind="event.detailUrl">
+				<h3 textContent.bind="event.title"></h3>
+			</a>
+		</header>
+		<div class="col-xs-12">
+			<h5>${event.dateTime | dateFormat: 'MM/DD/YYYY h:mm a'}</h5>
+		</div>
+		<div class="col-xs-12">
+			<span innerHTML.bind='event.description | sanitizeHTML'></span>
+		</div>
+		<div class="col-xs-12" textContent.two-way="event.description" contenteditable="true"></div>
+		<div class="col-xs-2 col-xs-offset-10">
+			<button type="button" class="btn fav btn-default pull-right" click.delegate="favEventSelected(event)">
+				<i class="fa fa-heart fa-2" aria-hidden="true"></i>
+				fav
+			</button>
+		</div>
 	</div>
 </template>

@@ -4,6 +4,19 @@
     padding: 10px;
 }
 
+.rbox.fav {
+    border-color: #da1652a6;
+    box-shadow: 0 0 17px;
+}
+
+.btn.fav {
+    padding: 6px 20px;
+}
+
+.btn.fav .fa-heart {
+    color: #da1652a6;
+}
+
 .watermark {
     border-radius: 3px;
     background: #3ab174;
@@ -22,3 +35,4 @@
     overflow: hidden;
     width: 174px;
 }
+

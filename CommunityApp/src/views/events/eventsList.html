@@ -4,8 +4,7 @@
 	</style>
 	<div repeat.for="event of events">
 		<div>Index: ${$index}, First: ${$first}, Last: ${$last}, Even: ${$even}, Odd: ${$odd}</div>
-		<div>${$parent.whoAreYou}</div>
-		<compose model.bind="event" view="views/events/event.html"></compose>
+		<compose model.bind="{ event: event, parent: $parent }" view-model="viewmodels/events/event"></compose>
 	</div>
 	<div>
 		<button type="button" click.trigger="goToDiscussion()">Go To Discussion</button>

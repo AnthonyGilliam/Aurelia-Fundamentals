@@ -1,13 +1,18 @@
-import {inject} from 'aurelia-framework';
+import {inject, bindable, BindingEngine} from 'aurelia-framework';
 import {Router, activationStrategy} from 'aurelia-router';
 import {DataRepository} from 'services/dataRepository';
 
-@inject(DataRepository, Router)
+@inject(DataRepository, Router, BindingEngine)
 export class EventsList {
-	constructor(repo, router) {
+	@bindable favoriteEvent;
+	constructor(repo, router, bindingEngine) {
 		this.repo = repo;
 		this.router = router;
-		this.whoAreYou = "Luke, I am your father.";
+		this.favoriteEventObserver = bindingEngine
+			.propertyObserver(this, 'favoriteEvent')
+			.subscribe(favEvent =>
+				this.events.forEach(event => event.isFav = event.id === favEvent.id)
+		);
 	}
 
     goToDiscussion(){
@@ -40,9 +45,14 @@ export class EventsList {
                 this.events = events;
 			}
 
-            this.events.forEach(event =>
-                event.detailUrl = this.router.generate('eventDetail', { eventId: event.id })
-            )
+            this.events.forEach(event => {
+                event.detailUrl = this.router.generate('eventDetail', {eventId: event.id});
+                event.isFav = false;
+            })
         });
+	}
+
+    deactivate(){
+		this.favoriteEventObserver.dispose();
 	}
 }
